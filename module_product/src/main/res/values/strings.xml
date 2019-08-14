@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">module_product</string>
+    <string name="dami">大米</string>
+    <string name="jiushui">酒水</string>
+</resources>

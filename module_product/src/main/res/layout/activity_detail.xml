@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.foodie.product.ui.viewmodel.ProductViewModel" />
+        <import type="android.view.View"/>
+        <variable name="product" type="com.foodie.base.entity.Product"/>
+        <variable name="minusVisibility" type="boolean"/>
+        <variable name="addGoodCallback" type="com.foodie.product.bindingParam.ProductClickCallBack"/>
+        <variable name="minusGoodCallback" type="com.foodie.product.bindingParam.ProductClickCallBack"/>
+    </data>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="40dip">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                imgurl="@{product.photoUrl}"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/gengduoxinxi"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/detail_back_page"
+                android:layout_marginTop="18dp"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:alpha="0.8"
+                android:text="@{product.productName}"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/detail_name"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@{`销量`+product.productSales}"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:textSize="12dp"
+                android:id="@+id/detail_size"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:background="#fff"
+
+                >
+                <TextView
+                    android:id="@+id/dish_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textColor="@color/red"
+                    android:textSize="10sp"
+                    android:text="@{`￥`+String.valueOf(product.priceForUser)}"
+                    />
+
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/jian"
+                    android:onClick="@{(view) ->  minusGoodCallback.onClick(product,view)}"
+                    android:visibility="@{minusVisibility ? View.VISIBLE : View.GONE }"/>
+                <TextView
+                    android:id="@+id/dish_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:textSize="10sp"
+                    android:text="@{String.valueOf(product.num)}"
+                    android:visibility="@{minusVisibility ? View.VISIBLE : View.GONE }"/>
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:onClick="@{(view) ->  addGoodCallback.onClick(product,view)}"
+                    android:background="@drawable/jia"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="60dp"
+                        android:text="活动"
+
+                        android:textSize="18sp" />
+                    <com.nex3z.flowlayout.FlowLayout
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        app:flChildSpacing="6dp"
+                        app:flRowSpacing="8dp"
+                        android:id="@+id/moneyoff_flowlayout"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="介绍"
+
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:textSize="13sp"
+                        android:text="@{product.productIntro}"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:id="@+id/check_comment"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="查看评价"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/shopcar_bottomlayout"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
+                android:id="@+id/shopcar_layout"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:background="@color/grey"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@{`￥`+String.valueOf(viewModel.sumPrice)}"
+                    android:textColor="@color/red"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay_now"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:text="付款"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

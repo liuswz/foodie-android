@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools"
+  >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.foodie.order.ui.viewmodel.OrderViewModel" />
+        <variable name="emptyVisibility" type="Boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="35dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:id="@+id/all_order"
+                android:text="全部"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="35dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:id="@+id/notpay_order"
+                android:text="未支付"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="35dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:id="@+id/hadpay_order"
+                android:text="已支付"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="35dp"
+                android:singleLine="true"
+                android:textSize="18sp"
+                android:clickable="true"
+                android:id="@+id/appoint_order"
+                android:text="已预约"/>
+        </LinearLayout>
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:visibility="@{emptyVisibility ? View.VISIBLE  : View.GONE}"
+            app:layoutManager="LinearLayoutManager" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:visibility="@{emptyVisibility? View.GONE  : View.VISIBLE}"
+            android:clickable="true"
+            android:text="无订单"/>
+    </LinearLayout>
+</layout>

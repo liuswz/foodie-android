@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <import type="android.view.View"/>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <variable name="dish" type="com.foodie.base.entity.Dish"/>
+        <variable name="minusVisibility" type="boolean"/>
+        <variable name="addDishCallback" type="com.foodie.home.bindingParam.AddDishCallBack"/>
+        <variable name="minusDishCallback" type="com.foodie.home.bindingParam.AddDishCallBack"/>
+        <variable name="getDishDetailCallback" type="com.foodie.home.bindingParam.AddDishCallBack"/>
+        <!--<variable name="callback" type="android.view.View.OnClickListener"/>-->
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:onClick="@{(view) ->  getDishDetailCallback.onClick(dish,view)}"
+        >
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:scaleType="centerCrop"
+            imgurl="@{dish.photoUrl}"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textSize="15sp"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:text="@{dish.name}"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+
+                android:textSize="10sp"
+                android:text="@{dish.introduction}"
+                />
+            <!--android:textStyle="bold"-->
+            <TextView
+                android:id="@+id/dish_sales"
+                android:layout_width="300dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center"
+                android:textSize="10sp"
+                android:text="@{String.valueOf(dish.dishSales)}"
+                />
+            <!--`销量`+-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="horizontal"
+                android:background="#fff"
+
+                >
+                <TextView
+                    android:id="@+id/dish_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textColor="@color/red"
+                    android:textSize="10sp"
+                    android:text="@{`￥`+String.valueOf(dish.price)}"
+                    />
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/jian"
+                    android:onClick="@{(view) ->  minusDishCallback.onClick(dish,view)}"
+                    android:visibility="@{minusVisibility ? View.VISIBLE : View.GONE }"/>
+                <TextView
+                    android:id="@+id/dish_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:textSize="10sp"
+                    android:text="@{String.valueOf(dish.num)}"
+                    android:visibility="@{minusVisibility ? View.VISIBLE : View.GONE }"/>
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:onClick="@{(view) ->  addDishCallback.onClick(dish,view)}"
+                    android:background="@drawable/jia"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

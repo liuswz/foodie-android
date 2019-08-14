@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable name="tableNum" type="Integer"/>
+        <variable name="time" type="String"/>
+        <import type="android.view.View"/>
+        <variable name="goShopVisibility" type="boolean"/>
+        <variable name="appointVisibility" type="boolean"/>
+        <variable name="payWay" type="String"/>
+        <variable name="shopName" type="String"/>
+
+        <variable name="phoneNum" type="String"/>
+        <variable name="sumPrice" type="Double"/>
+        <variable name="minusPrice" type="Double"/>
+
+        <variable name="voucherMinusMoney" type="Double"/>
+        <variable name="moneyOffMinusMoney" type="Double"/>
+        <variable name="moneyOffDetail" type="String"/>
+
+
+        <!--<variable name="voucher" type="com.foodie.base.entity.Voucher"/>-->
+    </data>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:layout_marginBottom="40dp"
+            android:background="#fff">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@mipmap/gengduoxinxi"
+                        android:layout_marginLeft="18dp"
+                        android:id="@+id/detail_back_page"
+                        android:layout_marginTop="18dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+                    <com.duma.ld.mylibrary.SwitchView
+                        android:id="@+id/switchView"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        app:time="500"
+                        app:bgColor="#FFE0B2"
+                        app:leftColor="#8cc152"
+                        app:rightColor="#757575"
+                        app:setChecked="false"
+                        app:textLeft="在店"
+                        app:textLeftColor="#8cc152"
+                        app:textLeftClickColor="#757575"
+                        app:textRight="预约"
+                        app:textRightClickColor="#FFE0B2"
+                        app:textRightColor="#8cc152" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{goShopVisibility ? View.VISIBLE : View.GONE }">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="可以输入桌号"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="桌号"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <EditText
+                            android:id="@+id/tableNum"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:inputType="number"
+                            android:text="@{String.valueOf(tableNum)}"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{appointVisibility ? View.VISIBLE : View.GONE }">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="输入预约信息"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:id="@+id/chooseTime"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="预约时间"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:text="@{time}"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="人数"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <EditText
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/peopleNum"
+                            android:inputType="number"
+                            />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="手机号"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <EditText
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/phoneNum"
+                            android:text="@{phoneNum}"
+                            android:inputType="phone"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:id="@+id/choosePayWay"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="支付方式"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:text="@{payWay}"
+                            />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="@{shopName}"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/shopcar_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"/>
+                       >
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="满减活动"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="130dp"
+                            android:text="@{moneyOffMinusMoney==0 ? ``:`-￥`+String.valueOf(moneyOffMinusMoney)}"
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{moneyOffDetail}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:id="@+id/chooseVoucher"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="红包"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:textSize="15sp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:text="@{voucherMinusMoney==0 ? ``:`-￥`+String.valueOf(voucherMinusMoney)}"
+                            />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="备注"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+                            >
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:padding="15dp"
+                        android:hint="备注"
+                        android:textSize="15dp"
+                        android:id="@+id/remark"
+                       />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/shopcar_bottomlayout"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
+                android:id="@+id/shopcar_layout"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="2"
+                android:background="@color/grey"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@{`￥`+String.valueOf(sumPrice)}"
+                    android:textColor="@color/red"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@{`以优惠￥`+String.valueOf(minusPrice)}"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/pay_after"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:visibility="@{goShopVisibility ? View.VISIBLE : View.GONE }"
+                android:text="稍后支付"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/pay_now"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:visibility="@{goShopVisibility ? View.VISIBLE : View.GONE }"
+                android:text="立即支付"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/pay_some"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:visibility="@{appointVisibility ? View.VISIBLE : View.GONE }"
+                android:text="预付20%"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/pay_all"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:visibility="@{appointVisibility ? View.VISIBLE : View.GONE }"
+                android:text="全款支付"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.foodie.home.ui.viewmodel.DetailViewModel" />
+        <variable name="shop" type="com.foodie.base.entity.EasyShopDetail"/>
+        <variable name="voucher" type="com.foodie.base.entity.Voucher"/>
+    </data>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <com.foodie.home.myview.CustomScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:background="#fff">
+        <!--android:fillViewport="true"-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        imgurl="@{shop.shopPhoto1}"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="70dp"
+                        imgurl="@{shop.photoUrl}"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        />
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/collect_icon"
+                        android:background="@drawable/shoucang2"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@{shop.shopName}"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_horizontal"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="@{`评价`+String.valueOf(shop.shopMark)}"
+                        android:textSize="13sp"
+                       />
+                    <!--`评价`+-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="@{`销量`+String.valueOf(shop.shopSales)}"
+                        android:textSize="13sp"
+                        android:layout_marginLeft="50dp"
+                        />
+                    <!--`销量`+-->
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="true"
+                    android:id="@+id/voucher_layout"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="代金卷  ￥"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="@{String.valueOf(voucher.money)}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="@{viewModel.ifGetVoucher}"/>
+                </LinearLayout>
+
+                <com.nex3z.flowlayout.FlowLayout
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:flChildSpacing="6dp"
+                    app:flRowSpacing="8dp"
+                    android:id="@+id/moneyoff_flowlayout"/>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="30dp"
+                    android:text="@{shop.shopNotice}"
+                    android:textSize="13sp"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/checkPosition"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:clickable="true"
+                android:text="查看位置"
+                android:textSize="17sp"
+                />
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/blue"
+                app:tabSelectedTextColor="@color/red"
+                app:tabTextColor="@color/black"
+                app:tabMode="fixed" />
+
+            <com.foodie.home.myview.MyViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff">
+            </com.foodie.home.myview.MyViewPager>
+
+
+        </LinearLayout>
+
+    </com.foodie.home.myview.CustomScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/shopcar_bottomlayout"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <LinearLayout
+            android:id="@+id/shopcar_layout"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="3"
+            android:background="@color/grey"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@{`￥`+String.valueOf(viewModel.sumPrice)}"
+                android:textColor="@color/red"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay_now"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@color/grey"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:text="付款"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>
+</layout>

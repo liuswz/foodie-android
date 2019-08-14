@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/gengduoxinxi"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/detail_back_page"
+                android:layout_marginTop="18dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="选择要评价的商品"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="90dp"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
+    </LinearLayout>
+
+</layout>

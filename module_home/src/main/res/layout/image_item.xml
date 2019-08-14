@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+
+
+        <variable name="imageUrl" type="String"/>
+
+        <variable name="callback" type="com.foodie.home.bindingParam.CheckBigImageCallBack"/>
+    </data>
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fff">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:orientation="vertical"
+            android:onClick="@{(view) ->  callback.onClick(imageUrl,view)}"
+            imgurl="@{imageUrl}"
+            />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <variable name="dish" type="com.foodie.base.entity.Dish"/>
+        <variable name="id" type="Integer"/>
+        <variable name="addHadAddDishCallback" type="com.foodie.home.bindingParam.AddHadAddDishCallBack"/>
+        <variable name="minusHadAddDishCallback" type="com.foodie.home.bindingParam.AddHadAddDishCallBack"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:text="@{dish.name}"
+            />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:textSize="10sp"
+            android:textColor="@color/red"
+            android:text="@{`￥`+String.valueOf(dish.price*dish.num)}"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@drawable/jian"
+            android:onClick="@{(view) -> minusHadAddDishCallback.onClick(id,view)}"
+            />
+        <TextView
+            android:id="@+id/dish_num"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:textSize="10sp"
+            android:text="@{String.valueOf(dish.num)}"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:onClick="@{(view) ->  addHadAddDishCallback.onClick(id,view)}"
+            android:background="@drawable/jia"/>
+    </LinearLayout>
+</layout>

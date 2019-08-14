@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.foodie.login.LoginViewModel" />-->
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+     >
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/smssdk_edittext_bg_selector"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="请输入手机号码"
+            android:textSize="15dp"
+            />
+        <LinearLayout
+            android:id="@+id/ll_yanzheng"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/et_yanzheng"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="40dp"
+                android:background="@drawable/smssdk_edittext_bg_selector"
+                android:textSize="15dp"
+                android:hint="验证码"/>
+            <Button
+                android:id="@+id/bt_getYanzheng"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/smssdk_dialog_btn_pre"
+                android:text="获取验证码"
+                android:textColor="@color/smssdk_white"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:text="登录"
+            android:textColor="@color/smssdk_white"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/wechat_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/smssdk_phone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+            <ImageButton
+                android:id="@+id/qq_login"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/smssdk_phone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

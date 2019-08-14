@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable name="username" type="String"/>
+        <variable name="photoUrl" type="String"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#266cdc"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/fanhui"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/back_page"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="个人信息"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                />
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:clickable="true"
+            android:id="@+id/change_photo"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="头像"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/icon_person"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:scaleType="centerCrop"
+                imgurl="@{photoUrl}"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/change_username"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="用户名"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
+                android:text="@{username}"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+</layout>

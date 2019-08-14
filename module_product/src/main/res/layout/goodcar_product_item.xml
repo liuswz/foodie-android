@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <variable name="product" type="com.foodie.base.entity.Product"/>
+        <variable name="id" type="Integer"/>
+        <variable name="addGoodCallback" type="com.foodie.product.bindingParam.GoodCarCallBack"/>
+        <variable name="minusGoodCallback" type="com.foodie.product.bindingParam.GoodCarCallBack"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:text="@{product.productName}"
+            />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:textSize="10sp"
+            android:textColor="@color/red"
+            android:text="@{`￥`+String.valueOf(product.priceForUser*product.num)}"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@drawable/jian"
+            android:onClick="@{(view) -> minusGoodCallback.onClick(id,view)}"
+            />
+        <TextView
+            android:id="@+id/dish_num"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:textSize="10sp"
+            android:text="@{String.valueOf(product.num)}"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:onClick="@{(view) ->  addGoodCallback.onClick(id,view)}"
+            android:background="@drawable/jia"/>
+    </LinearLayout>
+</layout>

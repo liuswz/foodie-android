@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <import type="android.view.View"/>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <variable name="order" type="com.foodie.base.entity.SimpleOrder"/>
+
+        <variable name="checkOrderDetail" type="com.foodie.order.bindingParam.OrderClickByIdCallBack"/>
+        <variable name="finishOrder" type="com.foodie.order.bindingParam.OrderClickByIdCallBack"/>
+        <variable name="commentOrder" type="com.foodie.order.bindingParam.OrderClickCallBack"/>
+        <variable name="payOrder" type="com.foodie.order.bindingParam.OrderClickCallBack"/>
+        <variable name="orderStatus1" type="String"/>
+        <variable name="orderStatus2" type="String"/>
+        <variable name="finishVisibility" type="Boolean"/>
+
+    </data>
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:orientation="horizontal"
+    android:background="#fff"
+    android:onClick="@{(view) ->  checkOrderDetail.onClick(order.id,view)}"
+   >
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingLeft="5dp"
+        android:scaleType="centerCrop"
+        imgurl="@{order.shopPhotoUrl}"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+       >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textSize="20sp"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:text="@{order.shopName}"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textSize="17sp"
+                android:layout_alignParentRight="true"
+                android:text="@{orderStatus1}"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:textSize="15sp"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:text="@{order.createTime}"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:text="@{orderStatus2}"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            >
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:textSize="17sp"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="@{order.showNames}"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textSize="17sp"
+                android:layout_alignParentRight="true"
+                android:text="@{`￥`+String.valueOf(order.cost)}"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:textSize="13sp"
+                android:gravity="right"
+                android:text="付款"
+                android:visibility="@{order.payStatus ==1 ? View.GONE  : View.VISIBLE}"
+                android:onClick="@{(view) ->  payOrder.onClick(order,view)}"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:textSize="13sp"
+                android:gravity="right"
+                android:text="评价"
+                android:visibility="@{order.ifComment==0 ? View.VISIBLE : View.GONE }"
+                android:onClick="@{(view) ->  commentOrder.onClick(order,view)}"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:textSize="13sp"
+                android:gravity="right"
+                android:text="确定收货"
+                android:visibility="@{finishVisibility  ? View.VISIBLE : View.GONE }"
+                android:onClick="@{(view) ->  finishOrder.onClick(order.id,view)}"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</layout>
+<!--<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    app:cardCornerRadius="4dp"
+    app:contentPadding="10dp"
+    >-->
+
+
+<!--
+</android.support.v7.widget.CardView>
+-->

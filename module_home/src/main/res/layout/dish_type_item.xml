@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+
+        <variable name="dishType" type="com.foodie.base.entity.DishType"/>
+        <!--<variable name="callback" type="com.foodie.home.bindingParam.ShopTypeClickCallBack"/>-->
+        <!--<variable name="color" type="String"/>-->
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:id="@+id/type_layout"
+
+        >
+        <!--  android:onClick="@{(view) ->  callback.onClick(dishType.typeName,view)}"-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:text="@{dishType.typeName}"
+                />
+
+    </LinearLayout>
+
+</layout>

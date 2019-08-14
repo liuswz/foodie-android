@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    app:ignore="NamespaceTypo,ResourceName">
+
+    <data>
+        <variable
+            name="callback"
+            type="com.foodie.product.bindingParam.ProductTypeClickCallBack" />
+
+        <variable
+            name="viewModel"
+            type="com.foodie.product.ui.viewmodel.ProductViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dip"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/search"
+                android:layout_width="300dp"
+                android:layout_height="33dp"
+                android:background="@drawable/shape_corner"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="#bab9be"
+                android:textSize="13sp"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:alpha="0.8"
+                            android:clickable="true"
+                            android:text="大米"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:onClick="@{(view) ->  callback.onClick(@string/dami,view)}"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:alpha="0.8"
+                            android:clickable="true"
+                            android:text="酒水"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:onClick="@{(view) ->  callback.onClick(@string/jiushui,view)}"
+                            />
+                    </LinearLayout>
+                </ScrollView>
+                <com.jcodecraeer.xrecyclerview.XRecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    app:layoutManager="LinearLayoutManager" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/shopcar_bottomlayout"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
+                android:id="@+id/shopcar_layout"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:background="@color/grey"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@{`￥`+String.valueOf(viewModel.sumPrice)}"
+                    android:textColor="@color/red"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay_now"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:text="付款"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

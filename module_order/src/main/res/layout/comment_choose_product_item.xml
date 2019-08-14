@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <variable name="orderItem" type="com.foodie.base.entity.SimpleOrderItem"/>
+        <variable name="callBack" type="com.foodie.order.bindingParam.OrderItemClickCallBack"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:onClick="@{(view) ->  callBack.onClick(orderItem,view)}"
+        android:background="#fff">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="5dp"
+            imgurl="@{orderItem.photoUrl}"
+            />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:text="@{orderItem.goodName}"
+            android:singleLine="true"
+            />
+
+    </LinearLayout>
+</layout>

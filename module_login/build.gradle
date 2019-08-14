@@ -1,0 +1,34 @@
+apply from: "../module.build.gradle"
+apply plugin: 'com.mob.sdk'
+android {
+    defaultConfig {
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.foodie.login"
+        }
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+    //统一资源前缀，规范资源引用
+   // resourcePrefix "login_"
+}
+MobSDK {
+//    domain 'jp'
+    appKey '2bda2c41e01f8'
+    appSecret '226ff4e644d7e62655645757481aa962'
+
+    SMSSDK {
+        // 若使用GUI的自动填充验证码功能，需打开此设置
+       autoSMS true
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //组件依赖基础库
+    api project(':library_base')
+    //组件中依赖阿里路由编译框架
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <import type="android.view.View"/>
+        <variable name="recyclerviewVisibility" type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#fff">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/gengduoxinxi"
+                android:layout_marginLeft="18dp"
+                android:id="@+id/back_page"
+                android:layout_marginTop="18dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:singleLine="true"
+                android:textSize="20sp"
+                android:text="选择店面"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/voucher_recyclerview"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{recyclerviewVisibility ? View.VISIBLE : View.GONE }"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:visibility="@{recyclerviewVisibility ? View.GONE :  View.VISIBLE  }"
+                android:text="附近无店面"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

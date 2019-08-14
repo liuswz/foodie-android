@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable name="order" type="com.foodie.base.entity.Order"/>
+        <variable name="ifAppointVisibility" type="Boolean"/>
+
+        <variable name="shouldPay" type="Double"/>
+        <variable name="getWay" type="String"/>
+        <variable name="payDetail" type="String"/>
+        <variable name="getWayFlag" type="Integer"/>
+        <variable name="checkGetShop" type="com.foodie.order.bindingParam.OrderClickByIdCallBack"/>
+
+
+    </data>
+    <RelativeLayout
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:layout_marginBottom="40dp"
+            android:background="#fff">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@mipmap/gengduoxinxi"
+                        android:layout_marginLeft="18dp"
+                        android:id="@+id/detail_back_page"
+                        android:layout_marginTop="18dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:text="@{order.ifFinish==0 ?`订单正在进行`:`订单已完成`}"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="@{order.shopName}"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/shopcar_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"/>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="满减活动"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{order.moneyOffCost==0 ? ``:`共减￥`+String.valueOf(order.moneyOffCost)}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:visibility="@{order.voucherCost==0 ? View.GONE : View.VISIBLE  }"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="代金卷"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{`共减￥`+String.valueOf(order.voucherCost)}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:visibility="@{ifAppointVisibility ? View.VISIBLE : View.GONE  }"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="已付"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{`￥`+String.valueOf(order.cost*0.3)}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:text="联系商家"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textColor="@color/blue"
+                            android:clickable="true"
+                            android:id="@+id/call_shop"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{payDetail}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="备注"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{order.remark}"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="订单信息"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="@{order.goodType==0?`订餐方式`:`取货方式`}"
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:gravity="right"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{getWay}"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:visibility="@{getWayFlag==1 ? View.VISIBLE  : View.GONE  }"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:text="预约时间"
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="right"
+                                android:layout_gravity="right"
+                                android:layout_marginStart="0dp"
+                                android:text="@{order.goDate+` `+order.goTime}"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:text="人数"
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="right"
+                                android:layout_gravity="right"
+                                android:layout_marginStart="0dp"
+                                android:text="@{order.peopleNum+`人`}"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:visibility="@{getWayFlag==2 ? View.VISIBLE  : View.GONE  }"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:text="收货地址"
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:gravity="right"
+                                android:layout_gravity="right"
+                                android:layout_marginStart="0dp"
+                                android:text="@{order.city+` `+order.address}"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:visibility="@{getWayFlag==3 ? View.VISIBLE  : View.GONE  }"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:clickable="true"
+                            android:onClick="@{(view) ->  checkGetShop.onClick(order.getInShopId,view)}"
+                            android:layout_height="35dp">
+                            <TextView
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:text="查看店铺"
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="订单号"
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:gravity="right"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{order.orderNo}"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:gravity="right"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:textColor="@color/blue"
+                            android:text="复制"
+                            android:id="@+id/copy_orderno"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:text="订单时间"
+                            android:textStyle="bold"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginStart="0dp"
+                            android:text="@{order.createTime}"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="@{order.payStatus==1 ? View.GONE  : View.VISIBLE  }"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+            <LinearLayout
+                android:id="@+id/shopcar_layout"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:background="@color/grey"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="@{`￥`+String.valueOf(shouldPay)}"
+                    android:textColor="@color/red"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay_now"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:text="立即支付"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

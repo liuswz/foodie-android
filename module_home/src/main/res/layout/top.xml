@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.foodie.home.ui.viewmodel.HomeViewModel" />
+    </data>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#fff"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:alpha="0.8"
+            android:clickable="true"
+            android:text="@{viewModel.position}"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/search"
+            android:layout_width="300dp"
+            android:layout_height="33dp"
+            android:background="@drawable/shape_corner"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="#bab9be"
+            android:textSize="13sp"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
+</layout>

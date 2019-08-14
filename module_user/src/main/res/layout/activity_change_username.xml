@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable name="username" type="String"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="#266cdc"
+        android:gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@mipmap/fanhui"
+            android:layout_marginLeft="18dp"
+            android:id="@+id/back_page"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="更改昵称"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="保存"
+            android:gravity="right"
+            android:clickable="true"
+            android:textSize="18sp"
+            android:layout_marginRight="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:id="@+id/save"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_marginTop="15dp"
+
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+        >
+    <EditText
+        android:id="@+id/username_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/bottom_line2"
+        android:hint="请输入昵称"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="@{username}"
+
+        />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">module_home</string>
+    <string name="shaokao">烧烤</string>
+    <string name="hanbao">汉堡</string>
+</resources>

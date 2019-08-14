@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+    <!--实体类和ui绑定-->
+    <data>
+        <!--databinding 使用poetry可以直接访问实体类Poetry里的字段-->
+        <!--<variable name="height" type="String"/>-->
+    </data>
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#fff">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:background="#fff">
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:textSize="15sp"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:text="已选商品"/>
+            <TextView
+                android:id="@+id/clear_shopcar"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:textSize="15sp"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="清空"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical"
+        android:background="#fff">
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shopcar_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"/>
+
+    </LinearLayout>
+</layout>

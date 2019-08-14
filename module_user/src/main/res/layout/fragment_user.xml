@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/tools"
+    >
+    <data>
+        <import type="android.view.View"/>
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.foodie.user.ui.viewmodel.UserViewModel" />-->
+
+        <variable name="photoUrl" type="String" />
+        <variable name="username" type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:alpha="0.8"
+                    android:text="我的"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/check_detail">
+        <ImageView
+            android:id="@+id/user_photo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/icon_person"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            imgurl="@{photoUrl}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:text="@{username}"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+
+
+           <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ebebeb"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:clickable="true"
+            android:id="@+id/get_voucher"
+            android:background="@drawable/click_changecolor"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/shoucang"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="代金卷"
+                android:layout_marginLeft="20dp"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:clickable="true"
+            android:id="@+id/get_my_voucher"
+            android:background="@drawable/click_changecolor"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/shoucang"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="查看已领代金卷"
+                android:layout_marginLeft="20dp"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:clickable="true"
+        android:id="@+id/shoucang"
+        android:background="@drawable/click_changecolor"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shoucang"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:text="收藏"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <View
+
+        android:layout_height="0.5dp"
+
+        android:layout_width="match_parent"
+
+        android:background="#d9d9d9"
+
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#ebebeb"
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:clickable="true"
+        android:id="@+id/zhuxiao"
+        android:background="@drawable/click_changecolor"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/zhanghaozhuxiao"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:text="注销"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <View
+
+        android:layout_height="0.5dp"
+
+        android:layout_width="match_parent"
+
+        android:background="#d9d9d9"
+
+        />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:clickable="true"
+        android:id="@+id/register_lequ"
+        android:background="@drawable/click_changecolor"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/lianxiwomen"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:text="入驻平台"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#ebebeb"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ebebeb"
+        />
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,3 @@
+include ':module_home', ':library_base',':module_product',':module_login',':module_order', ':module_user'
+
+//,':app',  ':module_product', ':module_order', ':module_user',
